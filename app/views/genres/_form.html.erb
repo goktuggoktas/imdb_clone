@@ -1,0 +1,19 @@
+
+<%= form_for @genre , url: genres_path do |f| %>
+    <% if @genre.errors.any? %>
+        <div id="errors"><h2><%= pluralize(@genre.errors.count, 'Error') %></h2>
+          <ul>
+            <% @genre.errors.full_messages.each do|msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p> <%= f.submit %></p>
+<% end  %>
+
+
