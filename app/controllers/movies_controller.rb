@@ -14,7 +14,6 @@ class MoviesController < ApplicationController
   end
 
   def create
-    movie_params = params.require(:movie).permit(:title, :year, :description, :genre_id, :poster)
     @movie = Movie.new(movie_params)
 
     if @movie.save then
@@ -34,6 +33,21 @@ class MoviesController < ApplicationController
   end
 
   def update
+    if @movie.update(movie_params) then
+      @movie.director_ids.each do |director_id|
+        DirectorMovie.find_by(person_id: director_id.to_i).destroy if params[:director_ids].exclude? director_id.to_i
+      end
+      params[:director_ids].each do |director_id|
+        DirectorMovie.create(movie_id: @movie.id, person_id: director_id.to_i) if @movie.director_ids.exclude? director_id.to_i
+      end
+      @movie.actor_ids.each do |actor_id|
+        ActorMovie.find_by(person_id: actor_id.to_i).destroy if params[:actor_ids].exclude? actor_id.to_i
+      end
+      params[:actor_ids].each do |actor_id|
+        ActorMovie.create(movie_id: @movie.id, person_id: actor_id.to_i) if @movie.actor_ids.exclude? actor_id.to_i
+      end
+      redirect_to movie_path
+    end
   end
 
   def destroy
@@ -46,5 +60,9 @@ class MoviesController < ApplicationController
 
     def set_people
       @people = Person.all
+    end
+
+    def movie_params
+      params.require(:movie).permit(:title, :year, :description, :genre_id, :poster)
     end
 end
