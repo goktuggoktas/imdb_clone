@@ -1,2 +1,4 @@
 <p>Name:</p><%= @person.name %><br>
 <p><strong>Bio:</strong></p><%= @person.bio %>
+| <%= link_to 'Edit', edit_person_path%>
+| <%= link_to 'Delete', person_path(@person) , method: :delete, data: {confirm: 'Are you sure?'} %>

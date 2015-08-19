@@ -7,6 +7,8 @@ class PeopleController < ApplicationController
 
   def show
   end
+  def edit
+  end
 
   def new
     @person = Person.new
@@ -21,16 +23,12 @@ class PeopleController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @person.update(person_params)
-    redirect_to root_path
+    redirect_to person_path
   end
 
   def destroy
-    @person = Post.find(params[:id])
     @person.destroy
     redirect_to people_path
   end

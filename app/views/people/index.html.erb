@@ -2,5 +2,7 @@
 
     <p><strong>Name:</strong><%= person.name %><br></p>
     <p><strong>Bio:</strong><%= person.bio %><br></p>
+    | <%= link_to 'Edit', edit_person_path(person)%>
+    | <%= link_to 'Delete', person_path(person) , method: :delete, data: {confirm: 'Are you sure?'} %>
 <hr>
 <% end %>
