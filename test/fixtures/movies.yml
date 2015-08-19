@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  poster: MyString
+  rating: 9.99
+  year: 1
+  genre_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  poster: MyString
+  rating: 9.99
+  year: 1
+  genre_id: 1
