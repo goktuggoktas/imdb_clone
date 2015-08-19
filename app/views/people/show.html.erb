@@ -14,3 +14,5 @@
 <%# end %>
 | <%= link_to 'Edit', edit_person_path%>
 | <%= link_to 'Delete', person_path(@person) , method: :delete, data: {confirm: 'Are you sure?'} %>
+| <%= link_to 'New Person', new_person_path %>
+| <%= link_to 'Back', people_path %>

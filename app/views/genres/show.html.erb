@@ -1,3 +1,5 @@
 <p>Name:</p><%= @genre.name %><br>
 | <%= link_to 'Edit', edit_genre_path%>
 | <%= link_to 'Delete', genre_path(@genre) , method: :delete, data: {confirm: 'Are you sure?'} %>
+| <%= link_to 'New Genre', new_genre_path %>
+| <%= link_to 'Back', genres_path %>

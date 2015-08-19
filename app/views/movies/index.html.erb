@@ -2,4 +2,8 @@
 
 <% @movies.each do |movie| %>
   <%= link_to movie.title, movie_path(movie) %><br>
+    | <%= link_to 'Edit', edit_movie_path(movie)%>
+    | <%= link_to 'Delete', person_path(movie) , method: :delete, data: {confirm: 'Are you sure?'} %>
+    <hr>
 <% end %>
+| <%= link_to 'New Person', new_movie_path %>
