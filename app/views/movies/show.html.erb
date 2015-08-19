@@ -1,0 +1,26 @@
+<h1><%= @movie.title %></h1>
+
+<p><%= image_tag(@movie.poster) %></p>
+
+<br><br>
+
+<p>Description: <%= @movie.description %></p>
+<p>Year: <%= @movie.year %></p>
+<p>Rating: <%= @movie.rating %></p>
+<p>Genre: <%= Genre.find(@movie.genre_id).name %></p>
+
+<br><br>
+
+<p>Directors:</p>
+
+<% @movie.directors.each do |director| %>
+  <p><%= link_to director.name, person_path(director.id) %></p>
+<% end %>
+
+<br><br>
+
+<p>Actors:</p>
+
+<% @movie.actors.each do |actor| %>
+  <p><%= link_to actor.name, person_path(actor.id) %></p>
+<% end %> 
