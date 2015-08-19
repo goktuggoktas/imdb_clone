@@ -1,5 +1,5 @@
 class Genre < ActiveRecord::Base
 
-  has_many :genres
+  has_many :movies
 
 end
