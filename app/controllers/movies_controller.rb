@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :set_people, only: [:new, :edit, :create]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :new, :create]
 
   def index
     @movies = Movie.all
