@@ -5,4 +5,7 @@ class Person < ActiveRecord::Base
   has_many :directed_movies, through: :director_movies, source: :movie
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates :name , presence: true
+  validates :bio , length: {minimum: 30,maximum: 500}
+
 end
