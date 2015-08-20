@@ -24,5 +24,7 @@
 <% @movie.actors.each do |actor| %>
   <p><%= link_to actor.name, person_path(actor.id) %></p>
 <% end %>
+Rating  : <%= rating_for @movie, "Rating" %>
+
 
     |<%= link_to 'New Movie', new_movie_path %>

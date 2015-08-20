@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  ratyrate_rateable "Rating"
   has_many :actor_movies
   has_many :director_movies
   has_many :actors, through: :actor_movies, source: :person
