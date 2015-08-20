@@ -19,7 +19,8 @@
   </div>
 
   <div class="field">
-    <p><%= f.file_field :avatar %></p>
+    <%= f.label :poster %><br>
+    <%= f.file_field :poster %>
   </div>
 
   <div class="field">
@@ -39,20 +40,18 @@
     <%= f.text_area :description %>
   </div>
 
-
-    <div class="field">
-      <%= f.label :directors %><br>
-      <% @people.each do |person| %>
-          <%= check_box_tag 'movie[director_ids][]', person.id, (@movie.director_ids.include? person.id) ? true : false %>
-          <%= f.label person.name %>
-      <% end %>
-    </div>
-
+  <div class="field">
+    <%= f.label :directors %><br>
+    <% @people.each do |person| %>
+      <%= check_box_tag 'director_ids[]', person.id, (@movie.director_ids.include? person.id) ? true : false %>
+      <%= f.label person.name %>
+    <% end %>
+  </div>
 
   <div class="field">
     <%= f.label :actors %><br>
     <% @people.each do |person| %>
-      <%= check_box_tag 'movie[actor_ids][]', person.id, (@movie.actor_ids.include? person.id) ? true : false %>
+      <%= check_box_tag 'actor_ids[]', person.id, (@movie.actor_ids.include? person.id) ? true : false %>
       <%= f.label person.name %>
     <% end %>
   </div>

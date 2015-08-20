@@ -19,7 +19,8 @@
   </div>
 
   <div class="field">
-    <p><%= f.file_field :avatar %></p>
+    <%= f.label :poster %><br>
+    <%= f.file_field :poster %>
   </div>
 
   <div class="field">
@@ -54,8 +55,8 @@
       <%= f.label person.name %>
     <% end %>
   </div>
-    <p><%= f.file_field :avatar %></p>
-  <div class="actions">
+ 
+ <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
