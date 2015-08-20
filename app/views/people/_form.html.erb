@@ -1,4 +1,3 @@
-
 <%= form_for @person , url: people_path do |f| %>
         <% if @person.errors.any? %>
             <div id="errors"><h2><%= pluralize(@person.errors.count, 'Error') %></h2>
@@ -17,6 +16,7 @@
           <%= f.label :bio  %><br>
           <%= f.text_area :bio %>
         </p>
+        <p><%= f.file_field :avatar %></p>
         <p> <%= f.submit %></p>
 <% end  %>
 

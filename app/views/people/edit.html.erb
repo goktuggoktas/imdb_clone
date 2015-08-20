@@ -1,5 +1,23 @@
 <h1>Edit Person</h1>
-
-<%= render 'form' %>
-
+<%= form_for @person , :url => person_path(@person), method: :put,:html => {:multipart => true} do |f| %>
+    <% if @person.errors.any? %>
+        <div id="errors"><h2><%= pluralize(@person.errors.count, 'Error') %></h2>
+          <ul>
+            <% @person.errors.full_messages.each do|msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :name%><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :bio  %><br>
+      <%= f.text_area :bio %>
+    </p>
+    <p><%= f.file_field :avatar %></p>
+    <p> <%= f.submit %></p>
+<% end  %>
 | <%= link_to 'Back', people_path %>

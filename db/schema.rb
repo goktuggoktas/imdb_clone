@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819135711) do
+ActiveRecord::Schema.define(version: 20150820070028) do
 
   create_table "actor_movies", force: :cascade do |t|
     t.integer  "person_id"
@@ -46,8 +46,12 @@ ActiveRecord::Schema.define(version: 20150819135711) do
     t.decimal  "rating"
     t.integer  "year"
     t.integer  "genre_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "movies", ["genre_id"], name: "index_movies_on_genre_id"
@@ -56,8 +60,12 @@ ActiveRecord::Schema.define(version: 20150819135711) do
     t.string   "name"
     t.string   "photo"
     t.text     "bio"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

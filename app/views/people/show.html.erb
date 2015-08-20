@@ -1,17 +1,18 @@
+<%= image_tag @person.avatar.url(:medium) %>
 <p>Name:</p><%= @person.name %><br>
 <p><strong>Bio:</strong></p><%= @person.bio %>
-<% #if @person.acted_movies ==1 %>
+<% if @person.acted_movies.any? %>
     <p>Starring Movies:</p>
     <% @person.acted_movies.each do |movie| %>
         <p><%= link_to movie.title, movie_path(movie.id) %></p>
     <% end %>
-<%# end %>
-<%# if @person.directed_movies ==1 %>
+<% end %>
+<% if @person.directed_movies.any? %>
 <p>Directed Movies:</p>
     <% @person.directed_movies.each do |movie| %>
         <p><%= link_to movie.title, movie_path(movie.id) %></p>
     <% end %>
-<%# end %>
+<% end %>
 | <%= link_to 'Edit', edit_person_path%>
 | <%= link_to 'Delete', person_path(@person) , method: :delete, data: {confirm: 'Are you sure?'} %>
 | <%= link_to 'New Person', new_person_path %>

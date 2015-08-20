@@ -1,9 +1,10 @@
 <% @people.each do |person| %>
-
+    <%= image_tag person.avatar.url(:thumb) %>
     <p><strong>Name:</strong><%= person.name %><br></p>
     <p><strong>Bio:</strong><%= person.bio %><br></p>
     | <%= link_to 'Edit', edit_person_path(person)%>
     | <%= link_to 'Delete', person_path(person) , method: :delete, data: {confirm: 'Are you sure?'} %>
+    | <%= link_to 'Show Actor', person_path(person) %>
 <hr>
 <% end %>
     | <%= link_to 'New Person', new_person_path %>

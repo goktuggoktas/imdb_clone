@@ -1,6 +1,6 @@
 <h1>Edit <%= @movie.title %></h1>
 
-<%= form_for(@movie) do |f| %>
+<%= form_for@movie, :url => movie_path(@movie), method: :put,:html => {:multipart => true}  do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -19,8 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "Poster (paper_clip gem'i yüklendikten sonra düzenlenecek" %><br>
-    <%= f.text_field :poster %>
+    <p><%= f.file_field :avatar %></p>
   </div>
 
   <div class="field">
