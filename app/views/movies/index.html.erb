@@ -1,10 +1,14 @@
 <h1>Movies</h1>
 
+
 <% @movies.each do |movie| %>
+
     <%= image_tag movie.avatar.url(:thumb) %>
+
   <%= link_to movie.title, movie_path(movie) %><br>
     | <%= link_to 'Edit', edit_movie_path(movie)%>
     | <%= link_to 'Delete', movie_path(movie) , method: :delete, data: {confirm: 'Are you sure?'} %>
+
     <hr>
 <% end %>
 | <%= link_to 'New movie', new_movie_path %>
