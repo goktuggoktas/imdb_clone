@@ -1,6 +1,6 @@
 <% @genres.each do |genre| %>
 
-    <p><strong>Genre Name:</strong><%= genre.name %><br></p>
+    <p><strong>Genre Name:</strong><%= link_to genre.name, genre_path(genre) %><br></p>
     | <%= link_to 'Edit', edit_genre_path(genre)%>
     | <%= link_to 'Delete', genre_path(genre) , method: :delete, data: {confirm: 'Are you sure?'} %>
     <hr>
