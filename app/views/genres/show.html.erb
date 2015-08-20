@@ -1,5 +1,13 @@
-<p>Name:</p><%= @genre.name %><br>
+
+<hr>
+<h1><%= @genre.name %> Movies</h1>
+
 | <%= link_to 'Edit', edit_genre_path%>
-| <%= link_to 'Delete', genre_path(@genre) , method: :delete, data: {confirm: 'Are you sure?'} %>
-| <%= link_to 'New Genre', new_genre_path %>
-| <%= link_to 'Back', genres_path %>
+| <%= link_to 'Add Movie', new_movie_path(@genre) %>
+| <%= link_to 'Back', genres_path %>|<br>
+<hr>
+    <% @genre.movies.each do |movie| %>
+        <%= image_tag movie.avatar.url(:thumb) %>
+        <p><%= link_to movie.title, movie_path(movie.id) %></p>
+
+    <% end %>

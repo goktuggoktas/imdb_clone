@@ -7,7 +7,7 @@
 <p>Description: <%= @movie.description %></p>
 <p>Year: <%= @movie.year %></p>
 <p>Rating: <%= @movie.rating %></p>
-<p>Genre: <%= Genre.find(@movie.genre_id).name %></p>
+<p>Genre: <%= link_to Genre.find(@movie.genre_id).name, genre_path(@movie.genre_id) %></p>
 
 <br><br>
 
