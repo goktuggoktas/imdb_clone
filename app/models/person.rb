@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  paginates_per 5
   has_many :actor_movies
   has_many :director_movies
   has_many :acted_movies, through: :actor_movies, source: :movie

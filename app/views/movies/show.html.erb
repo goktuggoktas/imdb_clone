@@ -1,7 +1,7 @@
 <h1><%= @movie.title %></h1>
 
-<%= image_tag @movie.avatar.url(:medium) %>
-
+<%= image_tag @movie.avatar.url(:medium) %><br>
+Rating  : <%= rating_for @movie, "Rating" %>
 <br><br>
 
 <p>Description: <%= @movie.description %></p>
@@ -24,7 +24,7 @@
 <% @movie.actors.each do |actor| %>
   <p><%= link_to actor.name, person_path(actor.id) %></p>
 <% end %>
-Rating  : <%= rating_for @movie, "Rating" %>
 
 
-    |<%= link_to 'New Movie', new_movie_path %>
+
+|<%= link_to 'New Movie', new_movie_path %>

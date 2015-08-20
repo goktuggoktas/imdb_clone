@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  paginates_per 5
   ratyrate_rateable "Rating"
   has_many :actor_movies
   has_many :director_movies
