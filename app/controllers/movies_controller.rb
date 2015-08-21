@@ -1,8 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :set_people, only: [:new, :edit, :create]
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :new, :create]
-
+  before_action :set_people, only: [:new, :edit, :create, :update]
   def index
     @movies = Movie.all
   end
@@ -34,20 +32,10 @@ class MoviesController < ApplicationController
   end
 
   def update
-    if @movie.update(movie_params) then
-      @movie.director_ids.each do |director_id|
-        DirectorMovie.find_by(person_id: director_id.to_i).destroy if params[:director_ids].exclude? director_id.to_i
-      end
-      params[:director_ids].each do |director_id|
-        DirectorMovie.create(movie_id: @movie.id, person_id: director_id.to_i) if @movie.director_ids.exclude? director_id.to_i
-      end
-      @movie.actor_ids.each do |actor_id|
-        ActorMovie.find_by(person_id: actor_id.to_i).destroy if params[:actor_ids].exclude? actor_id.to_i
-      end
-      params[:actor_ids].each do |actor_id|
-        ActorMovie.create(movie_id: @movie.id, person_id: actor_id.to_i) if @movie.actor_ids.exclude? actor_id.to_i
-      end
+    if @movie.update(movie_params)
       redirect_to movie_path
+    else
+      render 'edit'
     end
   end
 
@@ -66,6 +54,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:id, :title, :year, :description, :genre_id, :avatar)
+      params.require(:movie).permit(:id, :title, :year, :description, :genre_id, :avatar, actor_ids: [], director_ids: [])
     end
 end

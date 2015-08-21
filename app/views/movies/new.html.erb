@@ -42,18 +42,13 @@
 
   <div class="field">
     <%= f.label :directors %><br>
-    <% @people.each do |person| %>
-      <input type="checkbox" name="director_ids[]" value="<%= person.id %>"/>
-      <%= f.label person.name %>
-    <% end %>
+    <%= collection_check_boxes :movie, :director_ids, @people, :id, :name  %>
   </div>
 
   <div class="field">
     <%= f.label :actors %><br>
-    <% @people.each do |person| %>
-      <input type="checkbox" name="actor_ids[]" value="<%= person.id %>"/>
-      <%= f.label person.name %>
-    <% end %>
+
+    <%= collection_check_boxes :movie, :actor_ids, @people, :id, :name  %>
   </div>
  
  <div class="actions">
