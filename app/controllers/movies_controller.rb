@@ -15,11 +15,11 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
-    if @movie.save then
-      params[:director_ids].each do |director_id|
+    if @movie.save
+      params[:movie][:director_ids].each do |director_id|
         DirectorMovie.create(movie_id: @movie.id, person_id: director_id.to_i)
       end
-      params[:actor_ids].each do |actor_id|
+      params[:movie][:actor_ids].each do |actor_id|
         ActorMovie.create(movie_id: @movie.id, person_id: actor_id.to_i)
       end
       redirect_to movie_path(@movie)
